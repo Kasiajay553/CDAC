@@ -1,21 +1,20 @@
 package com.oopsAssignment2.question5;
 
 public class Library {
-	String library;
+	String libraryName;
 	String location;
 	Book book;
-	static int totalbook=0;
-	Library(String library,String location,Book book){
-		this.library=library;
+	static int totalbooks=0;
+	Library(String libraryName,String location,Book book){
+		this.libraryName=libraryName;
 		this.location=location;
 		this.book=book;
 	}
 	void dispalylibrarydeatil() {
-		totalbook+=1;
-	
-		System.out.println("the library name is : "+library);
-		System.out.println(("the location of Library is : "+location));
-		book.dislayBookdeatail();
+		System.out.println("library name : "+libraryName);
+		System.out.println("Library Location"+location);
+		book.displaybook();
+		totalbooks+=1;
 	}
 
 }

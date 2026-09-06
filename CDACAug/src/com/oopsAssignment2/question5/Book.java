@@ -5,17 +5,19 @@ public class Book {
 	String title;
 	String author;
 	int price;
+
 	Book(int bookId,String title,String author,int price){
 		this.bookId=bookId;
 		this.title=title;
 		this.author=author;
 		this.price=price;
 	}
-	void dislayBookdeatail() {
-		System.out.println("the book Id is : "+bookId);
-		System.out.println("the book title is : "+title);
-		System.out.println("the book author is : "+author);
-		System.out.println("the book price is : "+price);
+	void displaybook() {
+		System.out.println("the book Id: "+bookId);
+		System.out.println("the book title : "+title);
+		System.out.println("the book author : "+author);
+		System.out.println("the book price"+price);
 	}
+	
 
 }

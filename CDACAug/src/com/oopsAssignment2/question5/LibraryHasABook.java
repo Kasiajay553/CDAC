@@ -16,7 +16,7 @@ public class LibraryHasABook {
 	        lib1.dispalylibrarydeatil();
 	        lib2.dispalylibrarydeatil();
 	        lib3.dispalylibrarydeatil();
-	        System.out.println("the total number book : "+Library.totalbook);
+	        System.out.println("the total number book : "+Library.totalbooks);
 
 	}
 
