@@ -29,7 +29,7 @@ public class BookManagementUsingHashMap {
 					bm.searchBook();
 					break;
 				case 4:
-					bm.updateBook(); // Added parenthesis
+					bm.updateBook(); 
 					break;
 				case 5:
 					bm.deleteBook();
@@ -42,7 +42,7 @@ public class BookManagementUsingHashMap {
 				}
 			} catch(Exception e) {
 				System.out.println("Invalid input type! Please enter numbers only.");
-				sc.nextLine(); // CRUCIAL: Clears the bad input token to prevent infinite loop
+				sc.nextLine(); 
 			}
 		}
 	}

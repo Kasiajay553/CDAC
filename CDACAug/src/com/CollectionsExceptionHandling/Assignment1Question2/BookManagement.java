@@ -6,7 +6,7 @@ public class BookManagement {
 	HashMap<Integer, Book> hashmap = new HashMap<>();
 	Scanner sc = new Scanner(System.in);
 	
-	// Removed "throws Customexception" since it is caught locally
+	
 	void addBook() {
 		System.out.println("enter the number of books you wants to add : ");
 		int numbook = sc.nextInt();
@@ -14,7 +14,7 @@ public class BookManagement {
 			try {
 				System.out.println("enter the book Id ");
 				int bookId = sc.nextInt();
-				sc.nextLine(); // clear buffer
+				sc.nextLine(); 
 				
 				System.out.println("enter the book title ");
 				String title = sc.nextLine();
@@ -24,7 +24,7 @@ public class BookManagement {
 				
 				System.out.println("enter the price ");
 				int price = sc.nextInt();
-				sc.nextLine(); // clear buffer
+				sc.nextLine(); 
 				
 				if (price <= 0 || bookId <= 0 || title.isEmpty() || author.isEmpty()) {
 					throw new Customexception();
@@ -35,7 +35,7 @@ public class BookManagement {
 			} catch(Customexception e){
 				System.out.println("Error: " + e.getMessage()); 
 				System.out.println("Please try entering this book details again.\n");
-				i--; // retry this index
+				i--; 
 			}
 		}
 	}
@@ -65,7 +65,7 @@ public class BookManagement {
 	void updateBook() {
 		System.out.println("Enter Book ID to update: ");
 		int id = sc.nextInt();
-		sc.nextLine(); // clear buffer
+		sc.nextLine(); 
 		if(hashmap.containsKey(id)) {
 			Book book = hashmap.get(id);
 			System.out.println("Enter new Title: ");
