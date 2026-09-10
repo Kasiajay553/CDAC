@@ -104,3 +104,28 @@ public class BookManagnment {
 	
 
 }
+
+
+////Sort by Title (Name) alphabetically
+//class SortByTitle implements Comparator<Book> {
+// @Override
+// public int compare(Book b1, Book b2) {
+//     return b1.title.compareTo(b2.title);
+// }
+//}
+//
+////Sort by Price (representing Sal) ascending
+//class SortByPrice implements Comparator<Book> {
+// @Override
+// public int compare(Book b1, Book b2) {
+//     return Integer.compare(b1.price, b2.price);
+// }
+//}
+//
+////Sort by Book ID ascending
+//class SortById implements Comparator<Book> {
+// @Override
+// public int compare(Book b1, Book b2) {
+//     return Integer.compare(b1.bookId, b2.bookId);
+// }
+//}
