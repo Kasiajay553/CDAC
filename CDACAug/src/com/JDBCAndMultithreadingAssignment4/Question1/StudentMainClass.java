@@ -1,4 +1,4 @@
-package com.JDBCAssignment4.Question1;
+package com.JDBCAndMultithreadingAssignment4.Question1;
 import java.util.Scanner;
 
 public class StudentMainClass {

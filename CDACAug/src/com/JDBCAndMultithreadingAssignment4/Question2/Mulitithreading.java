@@ -1,4 +1,4 @@
-package com.JDBCAssignment4.Question2;
+package com.JDBCAndMultithreadingAssignment4.Question2;
 
 public class Mulitithreading extends Thread {
 
