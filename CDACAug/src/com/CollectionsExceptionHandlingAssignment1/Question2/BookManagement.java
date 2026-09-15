@@ -90,4 +90,11 @@ public class BookManagement {
 			System.out.println("Book not found with ID: " + id);
 		}
 	}
+	void sortbyPrice() {
+		hashmap.entrySet().stream()
+		.sorted(Comparator.comparing((Map.Entry<Integer,Book> s)->s.getValue().getPrice()))
+		.forEach(s->s.getValue().display());
+	
+	}
+	
 }

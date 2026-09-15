@@ -15,7 +15,7 @@ public class StudentJDBCOpeartions {
             System.out.println("Connected successfully done........");
         } catch (Exception e) {
             System.out.println("Invalid connection / connection failed:");
-            e.printStackTrace(); // Replaced useless e.getMessage()
+            e.printStackTrace();
         }
     }
 
@@ -24,7 +24,7 @@ public class StudentJDBCOpeartions {
             PreparedStatement pre = con.prepareStatement("insert into student values(?,?,?,?)");
             System.out.println("Enter the Student ID : ");
             int studentId = sc.nextInt();
-            sc.nextLine(); // Clear scanner buffer
+            sc.nextLine(); 
             pre.setInt(1, studentId);
 
             System.out.println("Enter the name of the student: ");
@@ -37,7 +37,8 @@ public class StudentJDBCOpeartions {
 
             System.out.println("Enter the marks: ");
             int marks = sc.nextInt();
-            sc.nextLine(); // CRITICAL: Clear buffer after reading int
+            sc.nextLine(); 
+
             pre.setInt(4, marks);
 
             int rs = pre.executeUpdate();

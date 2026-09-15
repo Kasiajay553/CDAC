@@ -14,7 +14,8 @@ public class BookManagementUsingHashMap {
 			System.out.println("choice->3 for Search Book by ID");
 			System.out.println("choice->4 for Update Book");
 			System.out.println("choice->5 for Delete Book");
-			System.out.println("choice->6 for Exit");
+			System.out.println("choice->6 for sort by price");
+			System.out.println("choice->7 for Exit");
 			System.out.println("Enter your choice above options: ");
 			try {
 				int ch = sc.nextInt();
@@ -35,6 +36,9 @@ public class BookManagementUsingHashMap {
 					bm.deleteBook();
 					break;
 				case 6:
+					bm.sortbyPrice();
+					break;
+				case 7:
 					System.out.println("Exiting application...");
 					System.exit(0);
 				default :
