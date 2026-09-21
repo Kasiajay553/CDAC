@@ -47,8 +47,17 @@ insert into Books (name,author,price,publisher)
 values
 ('java','ramana',60000,'VRS');
 
+
+
 select *from Books;
 
+set sql_safe_updates=0;
+update Books set author='ajay'
+where name='java';
+set sql_safe_updates=1;
+
+
+select *from Books;
 rollback;
 
 select * from Books;
