@@ -13,6 +13,14 @@ alter table Books modify price decimal(10,3);
 alter table Books rename  column writer to publisher;
 alter table Books drop column published_year;
 
+drop table Books;
+
+Create table Books(
+name Varchar(50) not null,
+author varchar(50)not null,
+price decimal(10,2),
+writer varchar(50)not null
+);
 
 insert into Books (name,author,price,publisher)
 values
