@@ -138,6 +138,21 @@ SELECT city, avg(salary) as average_salary from employees  group by city order b
 SELECT job_title , count(*) as employee_count, max(salary) as maximum_salary from employees group by job_title order by avg(salary) desc;
 
 
+#Section I HAVING clause 
+-- 22. Display only those departments that have more than two employees.
 
+Select department from employees  group by department having count(*)>2;
+
+-- 23. Display cities whose average employee salary is greater than 70000. Show city and average_salary.
+
+Select city, avg(salary) as average_salary from employees group by city having avg(salary)>70000;
+
+-- 24. Display job titles for which the maximum salary is greater than 90000. Show job_title and maximum_salary.
+
+SELECT job_title, max(salary) as maximum_salary from employees group by job_title having max(salary)>90000;
+
+-- 25. Among Active employees, display departments whose total salary is BETWEEN 150000 and 400000. 
+-- Show department, employee_count and total_salary.
+select department, count(*) as employee_count, sum(salary) as total_salary from employees where employment_status='Active' group by department having SUM(salary) between 150000 and 400000;
 
 
