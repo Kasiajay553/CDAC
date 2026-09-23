@@ -152,3 +152,7 @@ where  e.salary>70000;
 -- 4. Write an equi join between employees and departments using department_id.
 -- Display employee_name, department_id and department_name.
 
+select e.employee_name, d.department_id, d.department_name
+from employees as e
+inner join departments as d
+on e.department_id=d.department_id;
