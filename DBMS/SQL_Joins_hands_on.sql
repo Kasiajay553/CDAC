@@ -156,3 +156,107 @@ select e.employee_name, d.department_id, d.department_name
 from employees as e
 inner join departments as d
 on e.department_id=d.department_id;
+
+-- 5. Display every employee along with the corresponding department name. An
+-- employee without a department must also appear.
+
+select * from employees as e
+left join departments as d
+on e.department_id=d.department_id;
+
+-- 6. Find employees who do not have a matching department. Display employee_id
+-- and employee_name.
+select employee_id, employee_name
+from employees  where
+department_id is null;
+
+
+-- 7. Use RIGHT JOIN to display every department and any employees assigned to it.
+-- Include departments that do not have employees.
+select * from departments as d
+right join employees as e
+on d.department_id= e.department_id;
+
+-- 8. Rewrite Question 7 using LEFT JOIN instead of RIGHT JOIN.
+select * from departments as d
+left join employees as e
+on d.department_id= e.department_id;
+
+-- 9. Find departments that do not have any employees. Display department_id,
+-- department_name and location.
+SELECT d.department_id, d.department_name, d.location FROM
+departments AS d LEFT JOIN employees AS e
+ON d.department_id = e.department_id
+WHERE e.employee_id IS NULL;
+
+-- 10. Produce a full outer join result between employees and departments in
+-- MySQL. The result must include matched rows, employees without departments,
+-- and departments without employees. Use LEFT JOIN, RIGHT JOIN and UNION ALL.
+
+select * from employees AS e
+left join departments as d
+on e.department_id=d.department_id
+where d.department_id is null
+union
+select * from employees AS e
+right join departments as d
+on e.department_id=d.department_id
+where e.department_id is null;
+
+-- 11. Generate every possible employee and shift combination. Display
+-- employee_name, shift_name, start_time and end_time.
+
+select employee_name, shift_name, start_time, end_time
+from employees
+join shifts;
+
+-- 12. Generate employee-shift combinations only for employee IDs 101, 102 and
+-- 103. Sort the result by employee_id and shift_id.
+
+select * from employees as e
+join shifts as s
+where e.employee_id in(102,101,103)
+order by e.employee_id asc, s.shift_id asc;
+
+SELECT 
+    e.employee_id,
+    e.employee_name,
+    s.shift_id,
+    s.shift_name
+FROM employees AS e
+CROSS JOIN shifts AS s
+WHERE e.employee_id = 101 
+   OR e.employee_id = 102 
+   OR e.employee_id = 103
+ORDER BY e.employee_id ASC, s.shift_id ASC;
+
+-- 13. Calculate the expected number of rows produced when all employees are
+-- CROSS JOINed with all shifts. Display employee_count, shift_count and
+-- expected_combinations.
+select 
+count(distinct employee_id) as employee_count, -- distinct used to get the unique or non repeat values.
+count(distinct shift_id) as shift_count,
+count(*) as expected_combinations
+from employees as e
+cross join shifts as s;
+
+-- 14. Use a self join to display employees who have a manager. Show the employee
+-- name and manager name.
+select * from employees;
+select e.employee_name, m.employee_name as manager
+from employees as e
+join employees as m
+on m.manager_id=e.employee_id ;
+
+
+-- 15. Modify the self join so that all employees appear, including employees
+-- without a manager. Display "No manager" for a missing manager.
+SELECT 
+    e.employee_name, 
+    COALESCE(m.employee_name, 'No manager') AS manager
+FROM employees AS e
+ JOIN employees AS m 
+  ON e.manager_id = m.employee_id;
+
+-- 16. Use a non-equi join to assign every employee to a salary grade. Display
+-- employee_name, salary and grade_code.
