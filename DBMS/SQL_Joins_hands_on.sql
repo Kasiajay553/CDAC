@@ -260,3 +260,100 @@ FROM employees AS e
 
 -- 16. Use a non-equi join to assign every employee to a salary grade. Display
 -- employee_name, salary and grade_code.
+
+select employee_name, salary, grade_code from employees as e
+join salary_grades as s
+on e.salary between s.min_salary  and s.max_salary;
+
+-- 17. Use NATURAL JOIN to display employee_id, employee_name, department_id and
+-- department_name for matched employees.
+
+select e.employee_id,e.employee_name, d.department_id, d.department_name
+from employees as e
+natural join departments as d;
+
+
+-- SECTION E - ON AND WHERE FILTER PLACEMENT
+-- ========================================
+
+-- 18. Write a LEFT JOIN that preserves every employee but matches department
+-- details only when the department name is Engineering. Put the department
+-- filter inside the ON clause.
+
+ select * from employees as e
+left join departments as d
+on e.department_id=d.department_id
+and d.department_name like '%Engineering%';
+
+-- 19. Write the same department filter in the WHERE clause. Compare the output
+-- with Question 18 and note which employee rows disappear.
+
+select * from employees as e
+left join departments as d
+on e.department_id=d.department_id
+where d.department_name like '%Engineering%';
+
+-- SECTION F - JOINS WITH AGGREGATION
+-- ========================================\
+
+-- 20. Count the number of employees in every department. Departments with no
+-- employees must appear with employee_count equal to zero.
+
+SELECT d.department_name, COUNT(e.employee_id) 
+AS employee_count
+FROM departments AS d
+LEFT JOIN employees AS e
+ON d.department_id = e.department_id
+GROUP BY d.department_name;
+
+-- 21. Calculate the average employee salary for every department. Include empty
+-- departments and display zero as their average salary.
+
+select d.department_name, ifnull(avg(e.salary),0) as average_salary
+from employees as e
+right join departments as d
+ON d.department_id = e.department_id
+GROUP BY d.department_name;
+
+-- 22. Display only departments that have at least two employees. Show
+-- department_name and employee_count.
+
+select department_name, count(e.employee_id) as employee_count
+from employees as e
+right join departments as d
+ON d.department_id = e.department_id
+GROUP BY d.department_name
+having count(e.employee_id)>=2;
+
+-- 23. Display each department's total salary expense. Include empty departments
+-- and display zero for their total salary.
+
+select department_name,ifnull(max(salary),0) as total_salary
+from employees as e
+right join departments as d
+ON d.department_id = e.department_id
+GROUP BY d.department_name;
+
+
+-- SECTION G - MULTIPLE JOINS AND ANALYSIS
+-- ========================================
+
+
+-- 24. Display employee_id, employee_name, department_name and manager_name for
+-- every employee. Employees without a department or manager must remain in the result.
+
+select e.employee_id, e.employee_name, d.department_name, m.employee_name as manager_name
+from employees as e
+left join employees as m
+on  e.manager_id=e.employee_id
+left join departments as d
+on e.department_id = d.department_id;
+
+-- 25. Display every department with its highest employee salary. Departments
+-- without employees must appear with zero as highest_salary.
+
+select d. department_name, ifnull(max(e.salary),0) as max_salary
+from employees as e
+right join departments as d
+on e.department_id=d.department_id
+group  by d.department_name;
