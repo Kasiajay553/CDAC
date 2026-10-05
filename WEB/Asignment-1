@@ -11,18 +11,18 @@
     </h1>
 
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjYgV7vKipIVt-mYG9gD7N-KPm7iAJS_3rKOL5i52NKWBKlwEnyBR2CqA&s=10" alt="Student Profile"  width="300px"/>
-    <ul style="list-style-type: circle;">
+     <ul style="list-style-type: circle;">
         <li>
-            Age
+            Age :23
         </li>
         <li>
-            Course
+            Course : PGCPAC
         </li>
         <li>
-            Roll Number 
+            Roll Number : 2601208512084
         </li>
         <li>
-            Email Address
+            Email Address :ajay@gmail.in
         </li>
     </ul>
 
