@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+</head>
+<body>
+    <h1>
+    TEKKALI KASI NAGA VENKATA AJAY KUMAR
+    </h1>
+
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjYgV7vKipIVt-mYG9gD7N-KPm7iAJS_3rKOL5i52NKWBKlwEnyBR2CqA&s=10" alt="Student Profile"  width="300px"/>
+    <ul style="list-style-type: circle;">
+        <li>
+            Age
+        </li>
+        <li>
+            Course
+        </li>
+        <li>
+            Roll Number 
+        </li>
+        <li>
+            Email Address
+        </li>
+    </ul>
+
+    <table border="1">
+        <tr><th>Qualification</th><th>Institute</th><th>Year of Passing</th><th>Percentage</th></tr>
+        <tr><td>B.TECH</td><td>VIIT</td><td>2026</td><td>8.7 CGPA</td></tr>
+    </table>
+    <h3>ABOUT</h3>
+    <p>Results-driven Associate Software Engineer with hands-on experience in full-stack development using Core Java, React.js, Python, and SQL. Proven ability to write clean, maintainable code across backend and frontend applications, integrate REST APIs, and work collaboratively in Agile teams. National Hackathon Winner (1st of 120 teams). Eager to contribute to enterprise-grade product development and grow within a fast-paced, AI-powered engineering environment.</p>
+
+    <a href="https://github.com/Kasiajay553"> GITHUB</a>
+</body>
+</html>
