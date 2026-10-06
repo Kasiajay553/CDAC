@@ -1,0 +1,58 @@
+Assignment 1 – Create Collection Called Company
+* Create a MongoDB database named Company DB.
+use Companydb
+
+* Create a collection named company.
+db.createCollection("company");
+
+* Add the fields Employee Name, Employee Number, and Salary.
+db.company.insertOne({
+  'Employe_Name':'nikhil','Employee_number':805,'salary':25000.00
+})
+
+
+Assignment 2 – Insert Employee Records
+* Insert one employee record using your own data.
+* Insert 8–10 employee records using insert Many().
+db.company.insertMany([
+  { "Employe_Name": "aarav", "Employee_number": 806, "salary": 28000.00 },
+  { "Employe_Name": "priya", "Employee_number": 807, "salary": 32000.00 },
+  { "Employe_Name": "rohit", "Employee_number": 808, "salary": 24000.00 },
+  { "Employe_Name": "sneha", "Employee_number": 809, "salary": 45000.00 },
+  { "Employe_Name": "amit", "Employee_number": 810, "salary": 19000.00 },
+  { "Employe_Name": "pooja", "Employee_number": 811, "salary": 35000.00 },
+  { "Employe_Name": "vikram", "Employee_number": 812, "salary": 27500.00 },
+  { "Employe_Name": "neha", "Employee_number": 813, "salary": 31000.00 },
+  { "Employe_Name": "rahul", "Employee_number": 814, "salary": 29000.00 }
+])
+
+
+* Display the inserted records.
+
+db.company.find();
+
+Assignment 3 – Sorting and Salary Range
+* Display all employee records in sorted order of Employee Name.
+db.company.find().sort({'Employe_Name' : 1});
+
+* Display all records in descending order of salary.
+db.company.find().sort({'salary' : -1});
+
+* Find employees with salary between ₹5,000 and ₹10,000.
+db.company.find({
+  'salary':{
+    $gte:25000,
+    $lte:30000
+  }
+});
+
+
+Assignment 4 – Skip and Pagination
+* Use skip() to skip a specified number of records.
+db.company.find().skip(2);
+
+* Use limit() to display a fixed number of records.
+db.company.find().limit(4);
+
+* Implement pagination to display records page by page.
+db.company.find().skip(2).limit(4);
