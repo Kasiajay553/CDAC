@@ -1,0 +1,15 @@
+.name{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#email{
+    color: black;
+}
+
+.contactlink{
+    text-decoration: none;
+}
+.contactinfo{
+    text-align: center;
+}
