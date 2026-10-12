@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Pet Appointment Schedule Form</title>
+</head>
+
+<body>
+    <h1>Pet Appointment Schedule Form</h1>
+    <form id="petform">
+        <label for="petname">PETNAME :</label>
+        <input type="text" id="petname" name="petname" placeholder="enter the pet name" required><br><br>
+        <label for="age">AGE :</label>
+        <input type="number" id="age" name="age" placeholder="enter the age of the pet" required><br>
+        <br><label for="pettype">PET TYPE :</label>
+        <select id="pettype" required>
+            <option selected="--select--">--select--</option>
+            <option value="dog">DOG</option>
+            <option value="cat">CAT</option>
+            <option value="other">Other</option>
+        </select><br><br>
+        <label for="breed">BREED OF PET :</label>
+        <input type="text" id="breed" name="breed" placeholder="Enter the Breed of Animal" required><br><br>
+        <label for="owenername">OWNER NAME :</label>
+        <input type="text" id="ownername" name="ownername" placeholder="Enter the Pet Owner Name" required><br>
+        <br><label for="petappointment">PETAPPOINTMENTDATE :</label>
+        <input type="date" id="petappointment" name="petappointment" placeholder="Enter the Date You want to Visit" required><br><br>
+        <label for="ownercontactno">OWNER CONTACT NUMBER :</label>
+        <input type="tel" id="ownercontactno" name="ownercontactno"
+       placeholder="Enter Owner Mobile Number"
+       maxlength="10" inputmode="numeric" required><br><br>
+        <button type="submit"> Submit</button>
+        <button type="reset"> Reset</button>
+    </form>
+
+    <p id="message"></p>
+
+    <h2>Appointment Dashboard</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Pet Name</th>
+                <th>Age</th>
+                <th>Pet Type</th>
+                <th>Breed</th>
+                <th>Owner Name</th>
+                <th>Appointment Date</th>
+                <th>Contact Number</th><br>
+        </thead>
+
+        <tbody id="appointmentTable"></tbody>
+    </table>
+
+    
+<script>
+const form = document.getElementById("petform");
+
+const petname = document.getElementById("petname");
+const age = document.getElementById("age");
+const pettype = document.getElementById("pettype");
+const breed = document.getElementById("breed");
+const ownername = document.getElementById("ownername");
+const petappointment = document.getElementById("petappointment");
+const ownercontactno = document.getElementById("ownercontactno");
+
+const message = document.getElementById("message");
+const appointmentTable = document.getElementById("appointmentTable");
+
+const textRegex = /^[a-zA-Z\s]+$/;
+const numberRegex = /^[0-9]+$/;
+
+
+function validateForm() {
+    let valid = true;
+
+    
+    if (!textRegex.test(petname.value.trim())) {
+        petname.setCustomValidity(
+            "Pet name must contain letters and spaces only."
+        );
+        valid = false;
+    } else {
+        petname.setCustomValidity("");
+    }
+
+   
+    if (
+        !numberRegex.test(age.value) ||
+        age.value.length > 2 ||
+        Number(age.value) < 0
+    ) {
+        age.setCustomValidity(
+            "Age must contain digits only and a maximum of 2 digits."
+        );
+        valid = false;
+    } else {
+        age.setCustomValidity("");
+    }
+
+    
+    if (!pettype.value) {
+        pettype.setCustomValidity("Please select a pet type.");
+        valid = false;
+    } else {
+        pettype.setCustomValidity("");
+    }
+
+    
+    if (!textRegex.test(breed.value.trim())) {
+        breed.setCustomValidity(
+            "Breed must contain letters and spaces only."
+        );
+        valid = false;
+    } else {
+        breed.setCustomValidity("");
+    }
+
+    
+    if (!textRegex.test(ownername.value.trim())) {
+        ownername.setCustomValidity(
+            "Owner name must contain letters and spaces only."
+        );
+        valid = false;
+    } else {
+        ownername.setCustomValidity("");
+    }
+
+    
+    if (!petappointment.value) {
+        petappointment.setCustomValidity(
+            "Please select an appointment date."
+        );
+        valid = false;
+    } else {
+        petappointment.setCustomValidity("");
+    }
+
+   
+    if (
+        !numberRegex.test(ownercontactno.value) ||
+        ownercontactno.value.length !== 10
+    ) {
+        ownercontactno.setCustomValidity(
+            "Contact number must contain exactly 10 digits."
+        );
+        valid = false;
+    } else {
+        ownercontactno.setCustomValidity("");
+    }
+
+    if (!valid) {
+        form.reportValidity();
+    }
+
+    return valid;
+}
+
+function getFormData() {
+    return {
+        petname: petname.value.trim(),
+        age: age.value,
+        pettype: pettype.value,
+        breed: breed.value.trim(),
+        ownername: ownername.value.trim(),
+        petappointment: petappointment.value,
+        ownercontactno: ownercontactno.value
+    };
+}
+function saveAppointment(data) {
+    let appointments = JSON.parse(
+        localStorage.getItem("appointments") || "[]"
+    );
+
+    appointments.push(data);
+
+    localStorage.setItem(
+        "appointments",
+        JSON.stringify(appointments)
+    );
+}
+
+function displayAppointments() {
+    const appointments = JSON.parse(
+        localStorage.getItem("appointments") || "[]"
+    );
+
+    appointmentTable.replaceChildren();
+
+    appointments.forEach(function (data) {
+        const row = document.createElement("tr");
+
+        const values = [
+            data.petname,
+            data.age,
+            data.pettype,
+            data.breed,
+            data.ownername,
+            data.petappointment,
+            data.ownercontactno
+        ];
+
+        values.forEach(function (value) {
+            const cell = document.createElement("td");
+            cell.textContent = value;
+            row.appendChild(cell);
+        });
+
+        appointmentTable.appendChild(row);
+    });
+}
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    message.textContent = "";
+    message.style.color = "red";
+
+    if (!validateForm()) {
+        return;
+    }
+
+    
+    const data = getFormData();
+
+   
+    console.log("Pet Appointment Data:", data);
+
+    
+    saveAppointment(data);
+
+   
+    displayAppointments();
+
+   
+    message.style.color = "green";
+    message.textContent =
+        "Pet appointment registered successfully!";
+
+    
+    form.reset();
+});
+
+
+displayAppointments();
+</script>
+
+
+</body>
+
+</html>
