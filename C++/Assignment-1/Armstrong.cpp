@@ -16,6 +16,7 @@ int main(){
         for(int i=1;i<=count;i++){
             digit*=temp%10;
         }
+       //sum += round(pow(remainder, digitCount)); 
         sum+=digit;
         temp=temp/10;
    
