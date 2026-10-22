@@ -18,7 +18,7 @@ int main(){
         }
        //sum += round(pow(remainder, digitCount)); 
         sum+=digit;
-        temp=temp/10;
+ 
    
    }
 
