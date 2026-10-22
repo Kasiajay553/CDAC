@@ -18,8 +18,7 @@ int main(){
         }
        //sum += round(pow(remainder, digitCount)); 
         sum+=digit;
- 
-   
+        temp=temp/10;
    }
 
    if(sum==n2){
