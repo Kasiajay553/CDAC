@@ -1,0 +1,86 @@
+Task 1(On Props)
+--------------
+Write a React JS program to create a functional component named Student that displays student details received through props.
+
+The App component should pass the following details to the Student component:
+
+Student Name: CDAC
+
+Course Name: React JS
+
+College Name: ABC College
+
+Requirements:
+
+Create a file named Student.jsx.
+
+Define a functional component named Student.
+
+Receive the student details through props.
+
+Display the student name, course name, and college name using JSX.
+
+Export the Student component using export default.
+
+Import the Student component into App.jsx.
+
+Pass the student details from App.jsx using props.
+
+Run the application and verify the output in the browser.
+
+Expected Output:
+
+Student Profile
+
+Student Name: CDAC
+
+Course Name: React JS
+
+College Name: ABC College
+
+Bonus Task: Display two students, Ravi and Sita, using the same Student component but pass different details to each instance.
+************************************************
+Task 2(Props Drilling)
+Write a React JS program to display student details using three levels of components.
+
+Create the following components:
+
+App — Parent component
+
+StudentInfo — Intermediate component
+
+StudentDetails — Child component
+
+The App component should contain the following student information:
+
+Student Name: CDAC
+
+Course Name: React JS
+
+College Name: ABC College
+
+Requirements:
+
+Create separate files for StudentInfo.jsx and StudentDetails.jsx.
+
+Declare the student details in the App component.
+
+Pass the student details from App to StudentInfo using props.
+
+Pass the same details from StudentInfo to StudentDetails using props.
+
+Display all student details inside the StudentDetails component.
+
+Import and use the components correctly.
+
+Run the application and verify the output in the browser.
+
+Expected Output:
+
+Student Information
+
+Student Name: CDAC
+
+Course Name: React JS
+
+College Name: ABC College

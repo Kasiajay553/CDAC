@@ -1,0 +1,91 @@
+Task 1(List And Keys)
+-------------------------------
+Write a React JS program to create a functional component named StudentList that displays a list of student names on a webpage.
+
+Use the following student names:
+
+Ravi
+
+Sita
+
+Ramesh
+
+Priya
+
+Kiran
+
+Requirements:
+
+Create a file named StudentList.jsx.
+
+Define a functional component named StudentList.
+
+Store the student names in an array.
+
+Use the JavaScript map() method to display each student name inside an <li> element.
+
+Use a unique key prop for each list item.
+
+Display the names as an unordered list using <ul> and <li>.
+
+Import and use the StudentList component inside App.jsx.
+
+Run the application and verify the output in the browser.
+
+Expected Output:
+
+Student List
+
+Ravi
+
+Sita
+
+Ramesh
+
+Priya
+
+Kiran
+******************************************
+Task 2(On Routing)
+--------------------------------------------------
+Write a React JS program to create a simple college website with the following three pages:
+
+Home — Displays the message "Welcome to ABC College".
+
+Courses — Displays the message "We offer BCA, BBA and BSc courses".
+
+Admissions — Displays the message "Admissions are now open".
+
+Requirements:
+
+Create three functional components named Home, Courses, and Admissions.
+
+Use React Router to configure the following routes:
+
+/ for the Home page
+
+/courses for the Courses page
+
+/admissions for the Admissions page
+
+Use BrowserRouter, Routes, and Route to configure routing.
+
+Create navigation links labelled Home, Courses, and Admissions using the Link component.
+
+Display the appropriate page content when the user clicks each link.
+
+Import and use the required components correctly.
+
+Run the application and verify that all three routes work without a full-page reload.
+
+Expected Behaviour:
+
+The webpage should display these navigation links:
+
+Home | Courses | Admissions
+
+Clicking Home displays "Welcome to ABC College".
+
+Clicking Courses displays "We offer BCA, BBA and BSc courses".
+
+Clicking Admissions displays "Admissions are now open".

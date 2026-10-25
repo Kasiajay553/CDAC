@@ -1,0 +1,63 @@
+Task 1(UseState Hook)
+------------------------------
+Write a React JS program to create a functional component named PasswordToggle that allows users to show or hide the password they enter.
+
+Requirements:
+
+Create a file named PasswordToggle.jsx.
+
+Define a functional component named PasswordToggle.
+
+Import the useState Hook from React.
+
+Create a password input field.
+
+Create a button labeled Show Password.
+
+Initially, the input field should hide the entered password.
+
+When the user clicks Show Password, display the password as normal text.
+
+When the user clicks Hide Password, hide the password again.
+
+Use the useState Hook to manage whether the password is visible.
+
+Import and use the PasswordToggle component inside App.jsx.
+
+Expected Behaviour:
+---------------------------------
+Initially, the password is hidden.
+
+After clicking Show Password, the password becomes visible.
+
+After clicking Hide Password, the password becomes hidden again.
+***********************************************
+Task 2(UseEffect Hook)
+--------------------------------
+Write a React JS program to create a functional component named Welcome that displays a welcome message when the component is rendered for the first time.
+
+Requirements:
+
+Create a file named Welcome.jsx.
+
+Define a functional component named Welcome.
+
+Import the useEffect Hook from React.
+
+Use useEffect with an empty dependency array ([]).
+
+Display the message "Welcome to React JS!" in the browser when the component is rendered.
+
+Use console.log() inside useEffect to print "Welcome component mounted" in the browser console.
+
+Import and use the Welcome component inside App.jsx.
+
+Expected Result:
+
+Webpage:
+
+Welcome to React JS!
+
+Browser Console:
+
+Welcome component mounted

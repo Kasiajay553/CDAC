@@ -1,0 +1,74 @@
+Task 1(Conditional Rendering)
+----------------------------------------
+Write a React JS program to create a functional component named StudentResult that displays a student's examination result based on the marks obtained.
+
+Use the following details:
+
+Student Name: CDAC
+
+Marks Obtained: 75
+
+Passing Marks: 35
+
+Requirements:
+
+Create a file named StudentResult.jsx.
+
+Define a functional component named StudentResult.
+
+Declare variables for the student's name, marks, and passing marks.
+
+Check whether the student's marks are greater than or equal to the passing marks.
+
+If the marks are greater than or equal to 35, display "Result: Pass".
+
+Otherwise, display "Result: Fail".
+
+Display the student's name and marks along with the result.
+
+Import and use the StudentResult component inside App.jsx.
+
+Run the application and verify the output in the browser.
+
+Expected Output:
+
+Student Result
+
+Student Name: CDAC
+
+Marks Obtained: 75
+
+Result: Pass
+
+Bonus Task: Change the marks to 25 and verify that the result displays "Fail".
+
+************************************************
+Task 2(Event Handling)
+---------------------------------------------
+Write a React JS program to create a functional component named WelcomeMessage that displays a message WelCome To CDAC and button labeled "Click Me".
+
+When the user clicks the button, the application should display the message "Welcome to React JS!" on the webpage.
+
+Requirements:
+
+Create a file named WelcomeMessage.jsx.
+
+Define a functional component named WelcomeMessage.
+
+Display a button with the text "Click Me".
+
+Use the React onClick event handler to handle the button click.
+
+When the button is clicked, display the message "Welcome to React JS!".
+
+Import and use the WelcomeMessage component inside App.jsx.
+
+Run the application and verify the output in the browser.
+
+Expected Behaviour:
+
+Initially, the button "Click Me" should be displayed.
+
+When the user clicks the button, the message "Welcome to React JS!" should appear on the webpage.
+
+Bonus Task: Change the button text to "Say Hello" and display the message "Hello, Students!" when the button is clicked.
