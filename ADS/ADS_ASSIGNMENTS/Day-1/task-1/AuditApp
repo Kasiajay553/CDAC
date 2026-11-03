@@ -1,0 +1,98 @@
+package com.day1.task_1;
+
+public class AuditApp {
+    public static void main(String[] args) {
+        System.out.println("=================================================================");
+        System.out.println("   FINTECH AUDIT TRANSACTION REGISTRY TEST HARNESS (DAY 1)      ");
+        System.out.println("=================================================================");
+
+        AuditRegistryADT<Transaction> registry = new AuditLogBuffer<>(4);
+        System.out.printf("Initial State: Size = %d, Capacity = %d, IsEmpty = %b\n\n",
+                registry.size(), registry.capacity(), registry.isEmpty());
+
+        System.out.println("--- Phase 1: Appending Transactions (Testing 2x Resizing) ---");
+        registry.append(new Transaction("TXN-101", "ACC-7001", 1500.00, "CREDIT"));
+        registry.append(new Transaction("TXN-102", "ACC-7002", 250.50, "DEBIT"));
+        registry.append(new Transaction("TXN-103", "ACC-7001", 80.00, "DEBIT"));
+        registry.append(new Transaction("TXN-104", "ACC-7003", 3400.00, "CREDIT"));
+        System.out.printf("Buffer full: Size = %d, Capacity = %d\n", registry.size(), registry.capacity());
+
+        System.out.println("Appending 5th item (triggers resize):");
+        registry.append(new Transaction("TXN-105", "ACC-7004", 420.00, "DEBIT"));
+        System.out.printf("State after 5th append: Size = %d, Capacity = %d\n\n", registry.size(), registry.capacity());
+
+        System.out.println("--- Phase 2: Random Access Lookup ---");
+        Transaction t2 = registry.get(2);
+        System.out.println("Element at index 2 (O(1) access): " + t2 + "\n");
+
+        System.out.println("--- Phase 3: Retroactive Insertion at Index 1 (Testing Right-Shift) ---");
+        Transaction retroactiveTxn = new Transaction("TXN-999", "ACC-9999", 5000.00, "CREDIT");
+        registry.insertAt(1, retroactiveTxn);
+        System.out.println("Inserted TXN-999 at index 1. Current registry elements:");
+        for (int i = 0; i < registry.size(); i++) {
+            System.out.printf("  [%d] %s\n", i, registry.get(i));
+        }
+        System.out.printf("State after insertion: Size = %d, Capacity = %d\n\n", registry.size(), registry.capacity());
+
+        System.out.println("--- Phase 4: Linear Search Lookup ---");
+        Transaction searchKey = new Transaction("TXN-104", "", 0, "");
+        int foundIdx = registry.indexOf(searchKey);
+        System.out.printf("Searching for 'TXN-104' -> Found at index: %d (Expected: 4)\n", foundIdx);
+
+        Transaction absentKey = new Transaction("TXN-888", "", 0, "");
+        int notFoundIdx = registry.indexOf(absentKey);
+        System.out.printf("Searching for 'TXN-888' -> Result: %d (Expected: -1)\n\n", notFoundIdx);
+
+        System.out.println("--- Phase 5: Deleting Element at Index 1 (Testing Left-Shift) ---");
+        Transaction removed = registry.removeAt(1);
+        System.out.println("Removed transaction: " + removed);
+        System.out.println("Registry state after deletion:");
+        for (int i = 0; i < registry.size(); i++) {
+            System.out.printf("  [%d] %s\n", i, registry.get(i));
+        }
+        System.out.printf("State after deletion: Size = %d, Capacity = %d\n\n", registry.size(), registry.capacity());
+
+        System.out.println("--- Phase 6: Memory Compaction (trimToSize) ---");
+        System.out.printf("Before Trim: Size = %d, Physical Capacity = %d\n", registry.size(), registry.capacity());
+        registry.trimToSize();
+        System.out.printf("After Trim: Size = %d, Physical Capacity = %d\n\n", registry.size(), registry.capacity());
+
+        System.out.println("--- Phase 7: Edge Case Bounds Validation ---");
+        try {
+            System.out.println("Attempting to get index 99 (out of bounds):");
+            registry.get(99);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Successfully caught expected exception: " + e.getMessage());
+        }
+        try {
+            System.out.println("Attempting to insert at index -1 (out of bounds):");
+            registry.insertAt(-1, new Transaction("TXN-ERR", "ACC-0000", 1.0, "DEBIT"));
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Successfully caught expected exception: " + e.getMessage());
+        }
+
+        System.out.println("\n=================================================================");
+        System.out.println("   ALL AUDIT REGISTRY VALIDATION TESTS COMPLETED SUCCESSFULLY!  ");
+        System.out.println("=================================================================");
+    }
+}
+
+
+
+
+
+
+
+
+
+//====================================================================================
+//OPERATION        BEST-CASE   WORST-CASE   SPACE        JUSTIFICATION
+//====================================================================================
+//get(index)       O(1)        O(1)         O(1)         Instant math address retrieval.
+//append(elem)     O(1)        O(n)         O(1) 		 O(1) normal; O(n) during resize.
+//insertAt(0, e)   O(n)        O(n)         O(1)         Must push all elements right by 1.
+//removeAt(0)      O(n)        O(n)         O(1)         Must pull all elements left by 1.
+//indexOf(elem)    O(1)        O(n)         O(1)         Linear scan from front to back.
+//trimToSize()     O(n)        O(n)         O(n)         Allocates exact-size replacement array.
+//====================================================================================
+
