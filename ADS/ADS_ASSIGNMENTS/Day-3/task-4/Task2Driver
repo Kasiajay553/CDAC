@@ -1,0 +1,27 @@
+package com.day3.task_4;
+
+public class Task2Driver {
+
+    public static void main(String[] args) {
+        System.out.println("=== TASK 2: FIBONACCI RECURSION CALL COMPARISON ===");
+        FibonacciTracker ft = new FibonacciTracker();
+
+        // Test with small input n = 6
+        System.out.println("--- Test 1: n = 6 ---");
+        int resNaive6 = ft.fibNaive(6);
+        System.out.println("fibNaive(6) = " + resNaive6 + " | Total Recursive Calls: " + ft.getNaiveCalls());
+
+        int resMemo6 = ft.fibMemo(6);
+        System.out.println("fibMemo(6) = " + resMemo6 + " | Total Recursive Calls: " + ft.getMemoCalls());
+
+        // Test with larger input n = 30
+        System.out.println("\n--- Test 2: n = 30 (Call Explosion vs. Memoization) ---");
+        ft.resetNaiveCalls();
+
+        int resNaive30 = ft.fibNaive(30);
+        System.out.printf("fibNaive(30) = %d | Total Recursive Calls: %,d\n", resNaive30, ft.getNaiveCalls());
+
+        int resMemo30 = ft.fibMemo(30);
+        System.out.printf("fibMemo(30) = %d | Total Recursive Calls: %,d\n", resMemo30, ft.getMemoCalls());
+    }
+}
