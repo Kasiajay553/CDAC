@@ -1,0 +1,32 @@
+package com.day3.task_1;
+
+public class Task1Driver {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== TASK 1: DOUBLY LINKED LIST ===");
+
+        DoublyLinkedList dll = new DoublyLinkedList();
+
+        dll.addLast(20);
+        dll.addLast(30);
+        dll.addFirst(10);
+        dll.addLast(40);
+
+        dll.displayForward();
+        dll.displayBackward();
+
+        System.out.println("Deleting 20: " + dll.delete(20));
+
+        dll.displayForward();
+        dll.displayBackward();
+
+        System.out.println("Deleting 10 (head): " + dll.delete(10));
+
+        dll.displayForward();
+
+        System.out.println("Deleting 40 (tail): " + dll.delete(40));
+
+        dll.displayForward();
+    }
+}
