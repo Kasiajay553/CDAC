@@ -1,0 +1,71 @@
+package com.day2.task_1;
+
+public class CircularQueue {
+
+	
+	private String[] queue;
+	private int front=0;
+	private int rear=-1;
+	private int size=0;
+	private int capacity;
+	
+	
+	public CircularQueue(int capacity) {
+		this.capacity=capacity;
+		queue=new String[capacity];
+		
+		
+		
+	}
+	public boolean isFull() {
+		return size==capacity;
+	}
+	public boolean isEmpty() {
+		return size==0;
+	}
+	public boolean enqueue(String item) {
+		if(isFull()) {
+			System.out.println("Queue is full! Cannot enqueue: "+ item);
+			return false;
+		}
+		rear=(rear+1)%capacity;
+		queue[rear]=item;
+		size++;
+		System.out.println("Enqueed :"+item);
+		return true;
+		
+	}
+	public String dequeue() {
+		if(isEmpty()) {
+			System.out.println("Queue is empty! Cannot dequeue.");
+			return null;
+		}
+		var item=queue[front];
+		queue[front]=null;
+		front=(front+1)%capacity;
+		size--;
+		return item;
+	}
+	public String peek() {
+		return queue[front];
+	}
+	public void display() {
+		System.out.print("Queue: [");
+		System.out.print("Front : "+front);
+		System.out.print(" Rear : "+rear);
+		System.out.print(" Size : "+size);
+		System.out.print("] : ");
+		System.out.print(" [");
+        for (int i = 0; i < size; i++) {
+            int index = (front + i) % capacity;
+            System.out.print(queue[index]);
+            if (i < size - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+		
+		
+		
+	}
+}
