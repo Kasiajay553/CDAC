@@ -1,0 +1,29 @@
+package com.day2.task_2;
+
+public class Task2Driver {
+	public static void main(String[] args) {
+		System.out.println("=== TASK 2: SINGLY LINKED LIST VERIFICATION ===");
+		StudentWaitingList list = new StudentWaitingList();
+
+		// 1. Regular additions (addLast)
+		list.addLast(102, "Bob");
+		list.addLast(103, "Charlie");
+
+		// 2. Priority addition (addFirst)
+		list.addFirst(101, "Alice");
+		list.display();
+		System.out.println("List Size: " + list.size());
+
+		// 3. Remove middle node
+		boolean removed102 = list.removeByRollNo(102);
+		System.out.println("Removed Roll 102 (Bob): " + removed102);
+		list.display();
+
+		// 4. Attempt to remove non-existent node
+		boolean removed999 = list.removeByRollNo(999);
+		System.out.println("Removed Roll 999: " + removed999);
+		list.display();
+		System.out.println("Final List Size: " + list.size());
+
+	}
+}
