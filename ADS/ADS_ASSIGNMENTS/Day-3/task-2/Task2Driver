@@ -1,0 +1,28 @@
+package com.day3.task_2;
+public class Task2Driver {
+
+    public static void main(String[] args) {
+
+        System.out.println("=== TASK 2: CIRCULAR LINKED LIST ===");
+
+        CircularLinkedList cll = new CircularLinkedList();
+
+        cll.add(100);
+        cll.add(200);
+        cll.add(300);
+
+        cll.display();
+
+        System.out.println("Deleting 100 (head): " + cll.delete(100));
+
+        cll.display();
+
+        System.out.println("Deleting 300 (tail): " + cll.delete(300));
+
+        cll.display();
+
+        System.out.println("Deleting 200 (last node): " + cll.delete(200));
+
+        cll.display();
+    }
+}
