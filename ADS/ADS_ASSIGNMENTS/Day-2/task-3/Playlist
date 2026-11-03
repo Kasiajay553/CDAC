@@ -1,0 +1,67 @@
+package com.day2.task_3;
+
+public class Playlist {
+	private static class TrackNode {
+		String title;
+		TrackNode next;
+
+		TrackNode(String title) {
+			this.title = title;
+			this.next = null;
+		}
+	}
+
+	private TrackNode head=null;
+	private TrackNode tail=null;
+
+
+	public void addTrack(String title) {
+		TrackNode newnode= new TrackNode(title);
+		if(head == null) {
+			tail=newnode;
+			head= newnode;
+			return;
+			
+		}
+		tail.next=newnode;
+		tail=newnode;
+		
+	}
+	
+
+	public void reverse() {
+	   
+	    if (head == null || head.next == null) {
+	        return;
+	    }
+
+	    TrackNode prev = null;
+	    TrackNode curr = head;
+	    TrackNode nextAddress = null;
+	    tail=head;
+
+	    while (curr != null) {
+	        nextAddress = curr.next; 
+	        curr.next = prev;        
+	        
+	        prev = curr;             
+	        curr = nextAddress;     
+	    }
+	    
+	    head = prev; 
+	}
+
+
+	public void display() {
+		TrackNode curr=head;
+		while(curr!=null) {
+			System.out.print(curr.title);
+			if(curr.next!=null) {
+				System.out.print(" -> ");
+			}
+			curr=curr.next;
+		}
+		System.out.println();
+	}
+
+}
