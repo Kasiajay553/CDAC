@@ -1,0 +1,36 @@
+package com.day4.task_2;
+import com.day4.task_1.*;
+
+public class Task2Driver {
+    public static void main(String[] args) {
+        System.out.println("=== TASK 2: BST DELETIONS (LEAF, 1-CHILD, 2-CHILDREN) ===");
+        BinarySearchTree bst = new BinarySearchTree();
+        int[] keys = {50, 30, 70, 20, 40, 60, 80};
+        
+        for (int k : keys) {
+            bst.insert(k);
+        }
+
+        // Case 1: Delete Leaf Node (20)
+        System.out.println("Deleting Leaf (20):");
+        bst.delete(20);
+        bst.inorder(); 
+        System.out.println();
+
+        // Case 2: Delete Node with 1 Child (30 has remaining child 40)
+        System.out.println("Deleting Node with 1 Child (30):");
+        bst.delete(30);
+        bst.inorder();
+        System.out.println();
+
+        // Case 3: Delete Node with 2 Children (50 - Root, replaced by successor 60)
+        System.out.println("Deleting Node with 2 Children (50 - Root):");
+        bst.delete(50);
+        bst.inorder();
+        System.out.println();
+        
+        bst.preorder();
+        System.out.println();
+    }
+}
+
