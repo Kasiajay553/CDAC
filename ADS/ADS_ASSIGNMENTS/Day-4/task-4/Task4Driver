@@ -1,0 +1,21 @@
+package com.day4.task_4;
+
+public class Task4Driver {
+    public static void main(String[] args) {
+        System.out.println("=== TASK 2: AVL TREE SELF-BALANCING ===");
+        AVLTree avl = new AVLTree();
+        
+        // Inserting sequentially sorted keys that would skew a naive BST into a linked list
+        System.out.println("Inserting sorted keys: 10, 20, 30, 40, 50");
+        avl.insert(10);
+        avl.insert(20);
+        avl.insert(30); // Triggers RR rotation: 20 becomes root
+        avl.insert(40);
+        avl.insert(50); // Triggers RR rotation: 40 balances right subtree
+        
+        avl.inorder();
+        
+        System.out.println("Root of Balanced AVL: " + avl.getRootKey() + " (Expected: 20)");
+        System.out.println("Height of AVL Tree:   " + avl.getTreeHeight() + " (Expected: 3 vs Skewed BST height: 5)");
+    }
+}
