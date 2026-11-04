@@ -1,0 +1,21 @@
+package com.day5.task_2;
+
+import java.util.Arrays;
+
+public class Task2Driver {
+    public static void main(String[] args) {
+        System.out.println("=== TASK 2: QUADRATIC SORTING ===");
+        
+        // Test Selection Sort
+        int[] arr1 = {64, 25, 12, 22, 11};
+        System.out.println("Original Array:   " + Arrays.toString(arr1));
+        QuadraticSorting.selectionSort(arr1);
+        System.out.println("Selection Sorted: " + Arrays.toString(arr1));
+        
+        // Test Insertion Sort
+        int[] arr2 = {12, 11, 13, 5, 6};
+        System.out.println("\nOriginal Array:   " + Arrays.toString(arr2));
+        QuadraticSorting.insertionSort(arr2);
+        System.out.println("Insertion Sorted: " + Arrays.toString(arr2));
+    }
+}
