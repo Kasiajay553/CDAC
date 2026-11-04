@@ -1,0 +1,22 @@
+package com.day5.task_1;
+
+import java.util.Arrays;
+
+public class Task1Driver {
+    public static void main(String[] args) {
+        System.out.println("=== TASK 1: SEARCHING ALGORITHMS ===");
+        
+        // Test Linear Search on unsorted array
+        int[] unsorted = {45, 12, 89, 23, 7, 56};
+        System.out.println("Array: " + Arrays.toString(unsorted));
+        System.out.println("Linear Search 23: Index " + SearchingAlgorithms.linearSearch(unsorted, 23));
+        System.out.println("Linear Search 99: Index " + SearchingAlgorithms.linearSearch(unsorted, 99));
+        
+        // Test Binary Search on sorted array
+        int[] sorted = {7, 12, 23, 45, 56, 89};
+        System.out.println("\nSorted Array: " + Arrays.toString(sorted));
+        System.out.println("Binary Search 23: Index " + SearchingAlgorithms.binarySearch(sorted, 23));
+        System.out.println("Binary Search 99: Index " + SearchingAlgorithms.binarySearch(sorted, 99));
+    }
+}
+
