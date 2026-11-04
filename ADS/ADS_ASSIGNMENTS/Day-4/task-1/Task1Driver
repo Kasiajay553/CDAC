@@ -1,0 +1,28 @@
+package com.day4.task_1;
+
+public class Task1Driver {
+
+	public static void main(String[] args) {
+		System.out.println("=== TASK 1: BST INSERTION, SEARCH & TRAVERSAL ===");
+
+		BinarySearchTree bst = new BinarySearchTree();
+
+		// Insert elements: 50, 30, 70, 20, 40, 60, 80
+		int[] keys = {50, 30, 70, 20, 40, 60, 80};
+		for (int k : keys) {
+		    bst.insert(k);
+		}
+
+		// In-order traversal must output numbers in strictly ascending sorted order
+		bst.inorder();
+
+		// Pre-order traversal displays root before subtrees
+		bst.preorder();
+
+		// Test search
+		System.out.println("Search 40: " + bst.search(40));
+		System.out.println("Search 99: " + bst.search(99));
+
+	}
+
+}
