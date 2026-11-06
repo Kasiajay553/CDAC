@@ -1,0 +1,33 @@
+package com.day6.task_4;
+
+
+import java.util.Map;
+
+public class Task2Driver
+{
+    public static void main(String[] args)
+    {
+        System.out.println("=== TASK 2: WORD FREQUENCY ANALYZER ===");
+
+        String passage =
+            "Data structures and algorithms: algorithms make data structures powerful and data fast.";
+
+        Map<String, Integer> result =
+            WordFrequencyAnalyzer.countWords(passage);
+
+        System.out.println("Text: \"" + passage + "\"");
+
+        System.out.println("\nWord Frequencies:");
+
+        for (Map.Entry<String, Integer> entry : result.entrySet())
+        {
+            System.out.println(" " + entry.getKey() + " -> " + entry.getValue());
+        }
+
+        System.out.println(
+            "\nMost Frequent Word: " +
+            WordFrequencyAnalyzer.findMostFrequent(result)
+        );
+    }
+}
+
