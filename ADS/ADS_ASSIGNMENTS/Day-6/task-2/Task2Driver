@@ -1,0 +1,56 @@
+package com.day6.task_2;
+
+
+public class Task2Driver
+{
+    public static void main(String[] args)
+    {
+        System.out.println("=== TASK 2: LINEAR PROBING WITH DELETION ===");
+
+        SimpleLinearProbingMap map = new SimpleLinearProbingMap(7);
+
+        // Keys 10, 17, 24 all hash to 3 (3 % 7 = 3)
+        System.out.println("Inserting (10, \"Alice\")...");
+        map.put(10, "Alice");
+
+        System.out.println("Inserting (17, \"Bob\") -> Collides at slot 3, placed at slot 4");
+        map.put(17, "Bob");
+
+        System.out.println("Inserting (24, \"Charlie\") -> Collides at slot 3 & 4, placed at slot 5");
+        map.put(24, "Charlie");
+
+        System.out.println("Inserting (2, \"Diana\") -> Placed at slot 2");
+        map.put(2, "Diana");
+
+        map.display();
+
+        // Delete middle collided key (17)
+        System.out.println("\nDeleting key 17 (Slot 4 marked as TOMBSTONE)...");
+
+        boolean removed = map.remove(17);
+        System.out.println("Removed 17: " + removed);
+
+        map.display();
+
+        System.out.println("\n--- Retrieval Verification ---");
+
+        System.out.println("get(10): " + map.get(10));
+        // Alice
+
+        System.out.println("get(17): " + map.get(17));
+        // null (deleted)
+
+        System.out.println("get(24): " + map.get(24));
+        // Charlie (probed PAST slot 4 tombstone to slot 5)
+
+        // Insert new element to verify Tombstone reuse
+        System.out.println("\nInserting (31, \"Eve\") -> Hashes to 3, reuses TOMBSTONE at slot 4...");
+
+        map.put(31, "Eve");
+        map.display();
+
+        System.out.println("get(31): " + map.get(31));
+        // Eve
+    }
+}
+
