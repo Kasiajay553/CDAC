@@ -1,0 +1,33 @@
+package com.day6.task_1;
+
+
+public class Task1Driver
+{
+    public static void main(String[] args)
+    {
+        System.out.println("=== TASK 1: HASH FUNCTIONS ===");
+
+        int tableSize = 10;
+
+        // Test Integer Hashing
+        int[] intKeys = {15, 25, -7, 108, 0};
+
+        System.out.println("--- Integer Hashing (tableSize = " + tableSize + ") ---");
+
+        for (int key : intKeys)
+        {
+            System.out.println("Key: " + key + " -> Index: " + SimpleHashFunctions.hashInt(key, tableSize));
+        }
+
+        // Test String Hashing
+        String[] stringKeys = {"apple", "banana", "cat", "dog"};
+
+        System.out.println("\n--- String Hashing (tableSize = " + tableSize + ") ---");
+
+        for (String key : stringKeys)
+        {
+            System.out.println("Key: \"" + key + "\" -> Index: " + SimpleHashFunctions.hashString(key, tableSize));
+        }
+    }
+}
+
