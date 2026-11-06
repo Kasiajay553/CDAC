@@ -1,0 +1,36 @@
+package com.day6.task_3;
+
+
+public class Task1Driver
+{
+    public static void main(String[] args)
+    {
+        System.out.println("=== TASK 1: DYNAMIC REHASHING ===");
+
+        SimpleRehashingMap map = new SimpleRehashingMap(4);
+
+        // Initial capacity is 4
+        map.put(1, "Java");
+        map.put(2, "Python");
+        map.display();
+
+        // Inserting 3rd element: (2 + 1) / 4 = 0.75 >= 0.75 -> triggers rehash!
+        System.out.println("\nInserting key 3 (triggers rehash since (2+1)/4 = 0.75 >= 0.75):");
+
+        map.put(3, "C++");
+        map.display();
+
+        map.put(4, "Rust");
+        map.put(5, "Go");
+        map.display();
+
+        // Verify lookups work correctly across resized capacity
+        System.out.println("\n--- Retrieval ---");
+
+        System.out.println("get(1): " + map.get(1));
+        System.out.println("get(3): " + map.get(3));
+        System.out.println("get(5): " + map.get(5));
+        System.out.println("get(99): " + map.get(99));
+    }
+}
+
